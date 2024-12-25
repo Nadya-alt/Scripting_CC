@@ -1,96 +1,82 @@
-# 1. Création et initialisation interactive de My_PC
-def create_my_pc():
-    my_pc = {}
-    my_pc['processeur'] = input("Entrez le modèle du processeur : ")
-    my_pc['ram'] = int(input("Entrez la quantité de RAM (en Go) : "))
-    my_pc['stockage'] = int(input("Entrez la quantité de stockage (en Go) : "))
-    my_pc['carte_graphique'] = input("Entrez le modèle de la carte graphique : ")
-    my_pc['système_d’exploitation'] = input("Entrez le système d'exploitation : ")
-    return my_pc
+# 1. Création et initialisation de Mon_pc
+def create_mon_pc():
+    mon_pc = {}
+    mon_pc['processeur'] = input("Entrez le modèle du processeur : ")
+    mon_pc['ram'] = int(input("Entrez la quantité de RAM (en Go) : "))
+    mon_pc['stockage'] = int(input("Entrez la quantité de stockage (en Go) : "))
+    mon_pc['carte_graphique'] = input("Entrez le modèle de la carte graphique : ")
+    mon_pc['système_d’exploitation'] = input("Entrez le système d'exploitation : ")
+    return mon_pc
 
-# 2. Afficher par une fonction paramétrable les clés de My_PC
-def afficher_cle(my_pc):
-    print("Clés du dictionnaire My_PC :")
-    for cle in my_pc.keys():
+# 2. Afficher les clés de Mon_PC
+def afficher_cle(mon_pc):
+    for cle in mon_pc:
         print(cle)
 
-# 3. Afficher par une fonction paramétrable les valeurs de My_PC
-def afficher_valeur(my_pc):
-    print("Valeurs du dictionnaire My_PC :")
-    for valeur in my_pc.values():
+# 3. Afficher les valeurs de Mon_PC
+def afficher_valeur(mon_pc):
+    for valeur in mon_pc.values():
         print(valeur)
 
-# 4. Fonction permettant l'extraction des clés dans une liste
-def extraire_cle(my_pc):
-    return list(my_pc.keys())
+# 4. Extraire les clés dans une liste
+def extraire_cle(mon_pc):
+    return list(mon_pc.keys())
 
-# 5. Fonction permettant l'extraction des valeurs dans une liste
-def extraire_valeur(my_pc):
-    return list(my_pc.values())
+# 5. Extraire les valeurs dans une liste
+def extraire_valeur(mon_pc):
+    return list(mon_pc.values())
 
-# 6. Fonction permettant la correction de la quantité de RAM
-def corriger_ram(my_pc):
-    nouvelle_ram = int(input("Entrez la nouvelle quantité de RAM (en Go) : "))
-    my_pc['ram'] = nouvelle_ram
-    print(f"La quantité de RAM a été mise à jour : {my_pc['ram']} Go")
+# 6. Modifier la quantité de RAM
+def corriger_ram(mon_pc):
+    mon_pc['ram'] = int(input("Entrez la nouvelle quantité de RAM (en Go) : "))
+    print(f"La quantité de RAM a été mise à jour : {mon_pc['ram']} Go")
 
-# 7. Fonction permettant le tri de My_PC selon la quantité de stockage
+# 7. Trier les PC par stockage
 def trier_par_stockage(pc_list):
-    return sorted(pc_list, key=lambda pc: pc['stockage'], reverse=True)
+    pc_list.sort(key=lambda pc: pc['stockage'], reverse=True)
+    return pc_list
 
-# 8. Fonction permettant d'inverser deux paramètres du dictionnaire
-def inverser_parametres(my_pc, param1, param2):
-    if param1 in my_pc and param2 in my_pc:
-        my_pc[param1], my_pc[param2] = my_pc[param2], my_pc[param1]
-        print(f"Les paramètres {param1} et {param2} ont été échangés.")
+# 8. Inverser deux paramètres du dictionnaire
+def inverser_parametres(mon_pc, param1, param2):
+    if param1 in mon_pc and param2 in mon_pc:
+        mon_pc[param1], mon_pc[param2] = mon_pc[param2], mon_pc[param1]
     else:
-        print("Un ou plusieurs paramètres ne sont pas présents dans le dictionnaire.")
+        print("Un ou plusieurs paramètres ne sont pas présents.")
 
-# 9. Fonction permettant la sauvegarde de My_PC dans un autre dictionnaire CP_MyPC
-def sauvegarder_pc(my_pc):
-    cp_my_pc = my_pc.copy()
-    print("My_PC a été sauvegardé dans CP_MyPC.")
-    return cp_my_pc
+# 9. Sauvegarder Mon_PC dans un autre dictionnaire
+def sauvegarder_pc(mon_pc):
+    return mon_pc.copy()
 
-# 10. Fonction affichant le PC le plus performant de My_PC
+# 10. Afficher le PC le plus performant
 def afficher_pc_performant(pc_list):
-    meilleur_pc = max(pc_list, key=lambda pc: (pc['ram'], pc['stockage']))
-    print("Le PC le plus performant :")
-    print(meilleur_pc)
+    pc_performant = max(pc_list, key=lambda pc: (pc['ram'], pc['stockage']))
+    print("Le PC le plus performant : ", pc_performant)
 
 # Programme principal
 def main():
-    # Création et initialisation interactive de My_PC
-    my_pc = create_my_pc()
+    mon_pc = create_mon_pc()
 
-    # Affichage des clés et valeurs
-    afficher_cle(my_pc)
-    afficher_valeur(my_pc)
+    afficher_cle(mon_pc)
+    afficher_valeur(mon_pc)
 
-    # Extraction des clés et valeurs dans des listes
-    clés = extraire_cle(my_pc)
-    valeurs = extraire_valeur(my_pc)
-    print("Clés extraites dans une liste :", clés)
-    print("Valeurs extraites dans une liste :", valeurs)
+    clés = extraire_cle(mon_pc)
+    valeurs = extraire_valeur(mon_pc)
+    print("Clés extraites :", clés)
+    print("Valeurs extraites :", valeurs)
 
-    # Correction de la quantité de RAM
-    corriger_ram(my_pc)
+    corriger_ram(mon_pc)
 
-    # Sauvegarde de My_PC dans CP_MyPC
-    cp_my_pc = sauvegarder_pc(my_pc)
-    print("Dictionnaire sauvegardé :", cp_my_pc)
+    cp_mon_pc = sauvegarder_pc(mon_pc)
+    print("Dictionnaire sauvegardé : ", cp_mon_pc)
 
-    # Inverser deux paramètres dans My_PC
     param1 = input("Entrez le premier paramètre à échanger : ")
     param2 = input("Entrez le deuxième paramètre à échanger : ")
-    inverser_parametres(my_pc, param1, param2)
-    print("Dictionnaire après échange :", my_pc)
+    inverser_parametres(mon_pc, param1, param2)
+    print("Dictionnaire après échange :", mon_pc)
 
-    # Afficher le PC le plus performant
-    pc_list = [my_pc]  # Exemple avec une seule entrée, mais peut être étendu à une liste de PC
+    pc_list = [mon_pc]
     afficher_pc_performant(pc_list)
 
-    # Trier les PC par stockage
     pc_list_sorted = trier_par_stockage(pc_list)
     print("PC triés par stockage :", pc_list_sorted)
 
