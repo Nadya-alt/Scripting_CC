@@ -1,87 +1,95 @@
+# 1. Créer et initialiser la chaîne "MaChaine"
 def creer_chaine(n):
-    """Crée et initialise la chaîne MaChaine."""
+    ##Crée et initialise la chaîne avec les lettres de l'alphabet multipliées n fois.
     if n < 5:
         raise ValueError("N doit être supérieur ou égal à 5.")
     return "abcdefghijklmnopqrstuvwxyz" * n
 
+# 2. Afficher la chaîne
 def afficher_chaine(chaine):
-    """Affiche la chaîne donnée."""
+    ##Affiche la chaîne donnée.
     print(f"MaChaine : {chaine}")
 
+# 3. Copier les 17 derniers caractères
 def copier_17_derniers(chaine):
-    """Recopie les 17 derniers caractères de la chaîne dans TaChaine."""
+    ##Recopie les 17 derniers caractères de la chaîne.
     return chaine[-17:]
 
+# 4. Alterner les minuscules et majuscules
 def alterner_min_maj(chaine):
-    """Transforme MaChaine pour alterner minuscule/majuscule."""
+    ##Alterne les minuscules et majuscules dans la chaîne.
     resultat = ""
-    for i, char in enumerate(chaine):
+    for i in range(len(chaine)):
         if i % 2 == 0:
-            resultat += char.lower()
+            resultat += chaine[i].lower()
         else:
-            resultat += char.upper()
+            resultat += chaine[i].upper()
     return resultat
 
+# 5. Inverser la chaîne
 def inverser_chaine(chaine):
-    """Inverse la chaîne."""
+    ##Inverse la chaîne.
     return chaine[::-1]
 
+# 6. Construire une pyramide
 def construire_pyramide(chaine):
-    """Construit une pyramide avec les caractères de la chaîne."""
+    ##Crée une pyramide avec les caractères de la chaîne.
     pyramide = ""
     for i in range(1, len(chaine) + 1):
         pyramide += chaine[:i] + "\n"
     return pyramide
 
+# 7. Rechercher une sous-chaîne
 def rechercher_sous_chaine(chaine, taille):
-    """Recherche une sous-chaîne de taille paramétrable dans TaChaine."""
+    ##Recherche une sous-chaîne d'une taille spécifique dans la chaîne.
     if taille > len(chaine):
-        raise ValueError("La taille est supérieure à la longueur de la chaîne.")
+        raise ValueError("La taille est trop grande.")
     return chaine[:taille]
 
+# 8. Transformer la chaîne en liste triée
 def transformer_en_liste_triee(chaine):
-    """Transforme TaChaine en une liste triée."""
+    ##Transforme la chaîne en une liste triée.
     return sorted(chaine)
 
-# Programme principal
+# script principal #
 def main():
     try:
-        # Étape 1 : Créer et initialiser MaChaine
-        n = int(input("Veuillez entrer une valeur pour N (N >= 5) : "))
+        ##Demander à l'user la taille de la chaîne
+        n = int(input(" entrer un nombre N (N >= 5) : "))
         ma_chaine = creer_chaine(n)
         
-        # Étape 2 : Afficher MaChaine
+        ##Afficher la chaîne "MaChaine"
         afficher_chaine(ma_chaine)
         
-        # Étape 3 : Recopier les 17 derniers caractères dans TaChaine
+        ##Copier les 17 derniers caractères
         ta_chaine = copier_17_derniers(ma_chaine)
-        print(f"TaChaine (les 17 derniers caractères) : {ta_chaine}")
+        print(f"Les 17 derniers caractères : {ta_chaine}")
         
-        # Étape 4 : Transformer MaChaine pour alterner minuscule/majuscule
+        ##Alterner les minuscules et majuscules
         ma_chaine_alternee = alterner_min_maj(ma_chaine)
         print(f"MaChaine alternée (min/maj) : {ma_chaine_alternee}")
         
-        # Étape 5 : Inverser MaChaine
+        ##Inverser la chaîne
         ma_chaine_inversee = inverser_chaine(ma_chaine)
         print(f"MaChaine inversée : {ma_chaine_inversee}")
         
-        # Étape 6 : Construire une pyramide avec TaChaine
+        ##Construire une pyramide avec TaChaine
         pyramide = construire_pyramide(ta_chaine)
-        print("Pyramide construite avec TaChaine :")
+        print("Pyramide avec les 17 derniers caractères :")
         print(pyramide)
         
-        # Étape 7 : Rechercher une sous-chaîne dans TaChaine
+        ##Rechercher une sous-chaîne de taille spécifiée
         taille_sous_chaine = int(input("Entrez la taille de la sous-chaîne à rechercher : "))
         sous_chaine = rechercher_sous_chaine(ta_chaine, taille_sous_chaine)
         print(f"Sous-chaîne de taille {taille_sous_chaine} : {sous_chaine}")
         
-        # Étape 8 : Transformer TaChaine en une liste triée
+        ##Transformer la chaîne en liste triée
         liste_triee = transformer_en_liste_triee(ta_chaine)
-        print(f"TaChaine transformée en liste triée : {liste_triee}")
+        print(f"Liste triée des caractères de TaChaine : {liste_triee}")
     
     except ValueError as e:
         print(f"Erreur : {e}")
 
-# Exécuter le programme principal
+##Exécuter le programme
 if __name__ == "__main__":
     main()

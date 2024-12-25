@@ -44,42 +44,42 @@ def separate_pairs_and_impairs(liste1, liste2):
     l_impairs = [liste1[i] for i in range(1, len(liste1), 2)]
     return l_pairs, l_impairs
 
-# Programme principal
+# Script principal
 def main():
-    # Étape 1
+    #Etape 1
     size = int(input("Entrez la taille de la liste1 (supérieure à 20): "))
     liste1 = create_list1(size)
 
-    # Étape 2
+    #Étape 2
     liste2 = create_list2(liste1)
 
-    # Étape 3
+    #Étape 3
     display_sorted_lists(liste1, liste2)
 
-    # Étape 4
+    #Étape 4
     value = int(input("Entrez un entier à ajouter à liste1: "))
-    index = input("Voulez-vous l'ajouter à un emplacement spécifique ? (Oui/Non): ").strip().lower()
-    if index == 'oui':
+    index = input("Voulez-vous l'ajouter à un emplacement spécifique ? (O/N): ").strip().lower()
+    if index == 'o':
         idx = int(input("Entrez l'index où vous voulez insérer la valeur: "))
         liste1 = add_to_list(liste1, value, idx)
     else:
         liste1 = add_to_list(liste1, value)
     print("Liste1 après ajout:", liste1)
 
-    # Étape 5
+    #Étape 5
     value_to_remove = int(input("Entrez un entier à supprimer de liste1: "))
     liste1 = remove_occurrences(liste1, value_to_remove)
     print("Liste1 après suppression:", liste1)
 
-    # Étape 6
+    #Étape 6
     liste3 = create_list3(liste1, liste2)
     print("Liste3 (éléments aléatoires de liste1 et liste2):", liste3)
 
-    # Étape 7
+    #Étape 7
     liste3_reversed = reverse_list(liste3)
     print("Liste3 inversée:", liste3_reversed)
 
-    # Étape 8
+    #Étape 8
     l_pairs, l_impairs = separate_pairs_and_impairs(liste1, liste2)
     print("Indices pairs de liste2:", l_pairs)
     print("Indices impairs de liste1:", l_impairs)
